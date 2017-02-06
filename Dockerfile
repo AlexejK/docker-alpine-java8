@@ -5,8 +5,8 @@ MAINTAINER Alexej Kubarev
 
 # Java Version and other ENV
 ENV JAVA_VERSION_MAJOR=8 \
-    JAVA_VERSION_MINOR=111 \
-    JAVA_VERSION_BUILD=14 \
+    JAVA_VERSION_MINOR=121 \
+    JAVA_VERSION_BUILD=13 \
     JAVA_PACKAGE=server-jre \
     JAVA_HOME=/opt/jdk \
     PATH=${PATH}:/opt/jdk/bin \
