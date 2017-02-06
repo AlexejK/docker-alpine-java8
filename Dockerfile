@@ -7,6 +7,7 @@ MAINTAINER Alexej Kubarev
 ENV JAVA_VERSION_MAJOR=8 \
     JAVA_VERSION_MINOR=121 \
     JAVA_VERSION_BUILD=13 \
+    JAVA_PACKAGE_HASH=e9e7ea248e2c4826b92b3f075a80e441 \
     JAVA_PACKAGE=server-jre \
     JAVA_HOME=/opt/jdk \
     PATH=${PATH}:/opt/jdk/bin \
@@ -24,7 +25,7 @@ RUN apk upgrade --update && \
     /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib && \
     mkdir /opt && \
     curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie" -o /tmp/java.tar.gz \
-      http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz && \
+      http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/${JAVA_PACKAGE_HASH}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz && \
     curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie" -o /tmp/jce_policy-${JAVA_VERSION_MAJOR}.zip \
       http://download.oracle.com/otn-pub/java/jce/${JAVA_VERSION_MAJOR}/jce_policy-${JAVA_VERSION_MAJOR}.zip && \
     gunzip /tmp/java.tar.gz && \
