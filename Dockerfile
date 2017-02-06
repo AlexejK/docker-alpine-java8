@@ -1,6 +1,6 @@
 # AlpineLinux with a glibc and Oracle Java 8
 
-FROM alpine:3.4
+FROM alpine:3.5
 MAINTAINER Alexej Kubarev
 
 # Java Version and other ENV
