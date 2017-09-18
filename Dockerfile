@@ -1,17 +1,17 @@
 # AlpineLinux with a glibc and Oracle Java 8
 
-FROM alpine:3.5
+FROM alpine:3.6
 MAINTAINER Alexej Kubarev
 
 # Java Version and other ENV
 ENV JAVA_VERSION_MAJOR=8 \
-    JAVA_VERSION_MINOR=131 \
-    JAVA_VERSION_BUILD=11 \
-    JAVA_PACKAGE_HASH=d54c1d3a095b4ff2b6607d096fa80163 \
+    JAVA_VERSION_MINOR=144 \
+    JAVA_VERSION_BUILD=01 \
+    JAVA_PACKAGE_HASH=090f390dda5b47b9b721c7dfaa008135 \
     JAVA_PACKAGE=server-jre \
     JAVA_HOME=/opt/jdk \
     PATH=${PATH}:/opt/jdk/bin \
-    GLIBC_VERSION=2.25-r0 \
+    GLIBC_VERSION=2.25-r1 \
     LANG=C.UTF-8
 
 # Download and install dependencies in one step. Followed by cleanup.
@@ -25,9 +25,9 @@ RUN apk upgrade --update && \
     /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib && \
     mkdir /opt && \
     curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie" -o /tmp/java.tar.gz \
-      http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/${JAVA_PACKAGE_HASH}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz && \
+    http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-b${JAVA_VERSION_BUILD}/${JAVA_PACKAGE_HASH}/${JAVA_PACKAGE}-${JAVA_VERSION_MAJOR}u${JAVA_VERSION_MINOR}-linux-x64.tar.gz && \
     curl -jksSLH "Cookie: oraclelicense=accept-securebackup-cookie" -o /tmp/jce_policy-${JAVA_VERSION_MAJOR}.zip \
-      http://download.oracle.com/otn-pub/java/jce/${JAVA_VERSION_MAJOR}/jce_policy-${JAVA_VERSION_MAJOR}.zip && \
+    http://download.oracle.com/otn-pub/java/jce/${JAVA_VERSION_MAJOR}/jce_policy-${JAVA_VERSION_MAJOR}.zip && \
     gunzip /tmp/java.tar.gz && \
     tar -C /opt -xf /tmp/java.tar && \
     ln -s /opt/jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR} /opt/jdk && \
@@ -36,32 +36,32 @@ RUN apk upgrade --update && \
     sed -i s/#networkaddress.cache.ttl=-1/networkaddress.cache.ttl=30/ $JAVA_HOME/jre/lib/security/java.security && \
     apk del curl glibc-i18n && \
     rm -rf /opt/jdk/jre/plugin \
-           /opt/jdk/jre/bin/javaws \
-           /opt/jdk/jre/bin/jjs \
-           /opt/jdk/jre/bin/orbd \
-           /opt/jdk/jre/bin/pack200 \
-           /opt/jdk/jre/bin/policytool \
-           /opt/jdk/jre/bin/rmid \
-           /opt/jdk/jre/bin/rmiregistry \
-           /opt/jdk/jre/bin/servertool \
-           /opt/jdk/jre/bin/tnameserv \
-           /opt/jdk/jre/bin/unpack200 \
-           /opt/jdk/jre/lib/javaws.jar \
-           /opt/jdk/jre/lib/deploy* \
-           /opt/jdk/jre/lib/desktop \
-           /opt/jdk/jre/lib/*javafx* \
-           /opt/jdk/jre/lib/*jfx* \
-           /opt/jdk/jre/lib/amd64/libdecora_sse.so \
-           /opt/jdk/jre/lib/amd64/libprism_*.so \
-           /opt/jdk/jre/lib/amd64/libfxplugins.so \
-           /opt/jdk/jre/lib/amd64/libglass.so \
-           /opt/jdk/jre/lib/amd64/libgstreamer-lite.so \
-           /opt/jdk/jre/lib/amd64/libjavafx*.so \
-           /opt/jdk/jre/lib/amd64/libjfx*.so \
-           /opt/jdk/jre/lib/ext/jfxrt.jar \
-           /opt/jdk/jre/lib/ext/nashorn.jar \
-           /opt/jdk/jre/lib/oblique-fonts \
-           /opt/jdk/jre/lib/plugin.jar \
-           /tmp/* /var/cache/apk/*
+    /opt/jdk/jre/bin/javaws \
+    /opt/jdk/jre/bin/jjs \
+    /opt/jdk/jre/bin/orbd \
+    /opt/jdk/jre/bin/pack200 \
+    /opt/jdk/jre/bin/policytool \
+    /opt/jdk/jre/bin/rmid \
+    /opt/jdk/jre/bin/rmiregistry \
+    /opt/jdk/jre/bin/servertool \
+    /opt/jdk/jre/bin/tnameserv \
+    /opt/jdk/jre/bin/unpack200 \
+    /opt/jdk/jre/lib/javaws.jar \
+    /opt/jdk/jre/lib/deploy* \
+    /opt/jdk/jre/lib/desktop \
+    /opt/jdk/jre/lib/*javafx* \
+    /opt/jdk/jre/lib/*jfx* \
+    /opt/jdk/jre/lib/amd64/libdecora_sse.so \
+    /opt/jdk/jre/lib/amd64/libprism_*.so \
+    /opt/jdk/jre/lib/amd64/libfxplugins.so \
+    /opt/jdk/jre/lib/amd64/libglass.so \
+    /opt/jdk/jre/lib/amd64/libgstreamer-lite.so \
+    /opt/jdk/jre/lib/amd64/libjavafx*.so \
+    /opt/jdk/jre/lib/amd64/libjfx*.so \
+    /opt/jdk/jre/lib/ext/jfxrt.jar \
+    /opt/jdk/jre/lib/ext/nashorn.jar \
+    /opt/jdk/jre/lib/oblique-fonts \
+    /opt/jdk/jre/lib/plugin.jar \
+    /tmp/* /var/cache/apk/*
 
 # EOF
