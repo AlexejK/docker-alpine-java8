@@ -11,7 +11,7 @@ ENV JAVA_VERSION_MAJOR=8 \
     JAVA_PACKAGE=server-jre \
     JAVA_HOME=/opt/jdk \
     PATH=${PATH}:/opt/jdk/bin \
-    GLIBC_VERSION=2.25-r1 \
+    GLIBC_VERSION=2.25-r0 \
     LANG=C.UTF-8
 
 # Download and install dependencies in one step. Followed by cleanup.
