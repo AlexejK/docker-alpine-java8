@@ -6,9 +6,6 @@ Basic [Docker](https://www.docker.com/) image to run [Java 8](https://www.java.c
 
 Based on minimalistic [AlpineLinux](http://alpinelinux.org/) to keep the size down.
 
-### AlpineLinux version
-Currently all tags are based on `alpine:3.5`
-
 ### Java Versions
 Unlike many other images, this one currently targets **only** Java8 Server JRE with Unlimited JCE Policy.
 It is possible that there will be dual-versions later (with and wihout Unlimited JCE Policy) but this is currently not planned.
