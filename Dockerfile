@@ -1,17 +1,17 @@
 # AlpineLinux with a glibc and Oracle Java 8
 
-FROM alpine:3.6
+FROM alpine:3.7
 MAINTAINER Alexej Kubarev
 
 # Java Version and other ENV
 ENV JAVA_VERSION_MAJOR=8 \
-    JAVA_VERSION_MINOR=144 \
-    JAVA_VERSION_BUILD=01 \
-    JAVA_PACKAGE_HASH=090f390dda5b47b9b721c7dfaa008135 \
+    JAVA_VERSION_MINOR=152 \
+    JAVA_VERSION_BUILD=16 \
+    JAVA_PACKAGE_HASH=aa0333dd3019491ca4f6ddbe78cdb6d0 \
     JAVA_PACKAGE=server-jre \
     JAVA_HOME=/opt/jdk \
     PATH=${PATH}:/opt/jdk/bin \
-    GLIBC_VERSION=2.25-r0 \
+    GLIBC_VERSION=2.26-r0 \
     LANG=C.UTF-8
 
 # Download and install dependencies in one step. Followed by cleanup.
