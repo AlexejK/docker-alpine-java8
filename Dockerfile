@@ -1,13 +1,13 @@
 # AlpineLinux with a glibc and Oracle Java 8
 
 FROM alpine:3.7
-MAINTAINER Alexej Kubarev
+LABEL maintainer="alexej.kubarev@gmail.com"
 
 # Java Version and other ENV
 ENV JAVA_VERSION_MAJOR=8 \
-    JAVA_VERSION_MINOR=152 \
-    JAVA_VERSION_BUILD=16 \
-    JAVA_PACKAGE_HASH=aa0333dd3019491ca4f6ddbe78cdb6d0 \
+    JAVA_VERSION_MINOR=162 \
+    JAVA_VERSION_BUILD=12 \
+    JAVA_PACKAGE_HASH=0da788060d494f5095bf8624735fa2f1 \
     JAVA_PACKAGE=server-jre \
     JAVA_HOME=/opt/jdk \
     PATH=${PATH}:/opt/jdk/bin \
